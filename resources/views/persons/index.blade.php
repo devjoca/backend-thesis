@@ -15,7 +15,7 @@
                 <div class="panel-body">
                     <a href="/persons/create">Create a Person</a>
                     <a href="/persons/search">Search Person</a>
-                    <a href="/persons/train">Traida data</a>
+                    <a href="/persons/train">Train data</a>
                     Training-status: {{ $status }}
                 </div>
 
@@ -43,7 +43,7 @@
                                     </form>
                                 </td>
                                 <td>
-                                    <a href="/persons/{{ $person['personId'] }}/photo">Show photos</a>
+                                    <a href="/persons/{{ $person['personId'] }}/photo">Add photos</a>
                                 </td>
                             </tr>
                         @endforeach
