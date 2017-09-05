@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class IncidentsController extends Controller
 {
+    public function index()
+    {
+        return Incident::all();
+    }
+
     public function store() {
         return Incident::create(request()->only(
             'person_name',

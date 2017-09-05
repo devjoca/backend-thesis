@@ -16,6 +16,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('example', require('./components/Example.vue'));
+Vue.component('incident-map', require('./components/IncidentMap.vue'));
 
 const app = new Vue({
     el: '#app'
