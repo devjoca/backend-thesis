@@ -18,8 +18,8 @@ class CreateIncidentsTable extends Migration
             $table->string('person_name');
             $table->string('person_document_number');
             $table->datetime('datetime');
-            $table->float('lat');
-            $table->float('long');
+            $table->double('lat');
+            $table->double('long');
             $table->text('aditional_information');
             $table->timestamps();
         });
