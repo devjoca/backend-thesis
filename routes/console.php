@@ -16,3 +16,30 @@ use Illuminate\Foundation\Inspiring;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
+
+Artisan::command('load-stations', function () {
+    $files = collect([
+        '/Users/joca/Desktop/1.json',
+        '/Users/joca/Desktop/2.json',
+        '/Users/joca/Desktop/3.json',
+        '/Users/joca/Desktop/4.json',
+    ]);
+
+    $files->each(function($file) {
+        $data = json_decode(file_get_contents($file), TRUE);
+
+        foreach($data['payload'] as $station) {
+            \DB::table('stations')->insert([
+                'name' => $station['title'],
+                'lat' => $station['lat'],
+                'long' => $station['lon'],
+            ]);
+        }
+    });
+
+
+
+
+    $this->comment('Finish');
+});
+
