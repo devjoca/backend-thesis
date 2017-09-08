@@ -5,7 +5,8 @@
           :center="{lat:-12.12, lng:-77.02}"
           :zoom="12"
           style="width: 100%; height: 500px"
-        ></gmap-map>
+        >
+      </gmap-map>
     </div>
 </template>
 
@@ -14,11 +15,22 @@
     import { loaded } from 'vue2-google-maps';
 
     export default {
-      async created () {
+      async mounted () {
+        let vm = this;
         await loaded;
-        const response = await axios.get('/api/incidents');
+        const incidents = await axios.get('/api/incidents');
+        const stations = await axios.get('/api/stations');
 
-        let points = _.map(response.data, function(incindent) {
+        _.each(stations.data, function(station) {
+          new google.maps.Marker({
+            position: new google.maps.LatLng(station.lat, station.long),
+            title: station.name,
+            map: vm.$refs.map.$mapObject,
+            draggable: false,
+          });
+        });
+
+        let points = _.map(incidents.data, function(incindent) {
           return new google.maps.LatLng(incindent.lat, incindent.long);
         });
         let heatmap = new google.maps.visualization.HeatmapLayer({
@@ -26,11 +38,6 @@
         })
 
         heatmap.setMap(this.$refs.map.$mapObject);
-      },
-      data () {
-          return {
-              incidents: []
-          }
       }
     }
 </script>
