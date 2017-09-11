@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateIncidentsTable extends Migration
+class CreateCriminalActsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateIncidentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('incidents', function (Blueprint $table) {
+        Schema::create('criminal_acts', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('person_id');
-            $table->string('email');
-            $table->datetime('datetime');
+            $table->string('details');
             $table->double('lat');
             $table->double('long');
-            $table->text('aditional_information');
-            $table->text('denouncePersonDetails');
+            $table->unsignedInteger('station_id');
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ class CreateIncidentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('incidents');
+        Schema::dropIfExists('criminal_acts');
     }
 }
