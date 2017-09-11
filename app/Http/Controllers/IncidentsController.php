@@ -14,12 +14,13 @@ class IncidentsController extends Controller
 
     public function store() {
         return Incident::create(request()->only(
-            'person_name',
-            'person_document_number',
+            'person_id',
+            'email',
             'datetime',
             'lat',
             'long',
-            'aditional_information'
+            'aditional_information',
+            'denouncePersonDetails'
         ));
     }
 }

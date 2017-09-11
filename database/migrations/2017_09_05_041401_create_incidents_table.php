@@ -15,12 +15,13 @@ class CreateIncidentsTable extends Migration
     {
         Schema::create('incidents', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('person_name');
-            $table->string('person_document_number');
+            $table->string('person_id');
+            $table->string('email');
             $table->datetime('datetime');
             $table->double('lat');
             $table->double('long');
             $table->text('aditional_information');
+            $table->text('denouncePersonDetails');
             $table->timestamps();
         });
     }

@@ -8,7 +8,7 @@
                 <div class="panel-heading">Person Form</div>
 
                 <div class="panel-body">
-                    <form method="post" action="/persons/detect" enctype="multipart/form-data">
+                    <form method="post" action="/person/detect" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <input type="file" name="photo" value=""><br>
                         <input type="submit" name="Enviar">

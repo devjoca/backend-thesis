@@ -13,9 +13,9 @@
                     </div>
                 @endif
                 <div class="panel-body">
-                    <a href="/persons/create">Create a Person</a>
-                    <a href="/persons/search">Search Person</a>
-                    <a href="/persons/train">Train data</a>
+                    <a href="/person/create">Create a Person</a>
+                    <a href="/person/search">Search Person</a>
+                    <a href="/person/train">Train data</a>
                     Training-status: {{ $status }}
                 </div>
 

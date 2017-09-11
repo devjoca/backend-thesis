@@ -41,14 +41,14 @@ class PeopleController extends Controller
                             'userData' => request('dni'),
                         ]);
 
-        return redirect('/persons');
+        return redirect('/person');
     }
 
     public function delete()
     {
         Zttp::withHeaders(['Ocp-Apim-Subscription-Key' => env('AZURE_KEY')])
             ->delete('https://eastus2.api.cognitive.microsoft.com/face/v1.0/persongroups/person-data/persons/' . request('person_id'));
-        return redirect('/persons');
+        return redirect('/person');
     }
 
     public function showPhoto($person_id)
@@ -69,7 +69,7 @@ class PeopleController extends Controller
         $result = curl_exec($ch);
         curl_close($ch);
 
-        return redirect('/persons');
+        return redirect('/person');
     }
 
     public function search()
@@ -104,12 +104,12 @@ class PeopleController extends Controller
                             ->get('https://eastus2.api.cognitive.microsoft.com/face/v1.0/persongroups/person-data/persons/'.$data[0]['candidates'][0]['personId']);
             $person = $response->json();
 
-            return redirect('/persons')->with([
+            return redirect('/person')->with([
                 'message' => "La persona es: {$person['name']} con DNI: {$person['userData']}",
             ]);
         }
 
-        return redirect('/persons')->with([
+        return redirect('/person')->with([
                 'message' => 'No se ha encontrado una persona con tu foto',
             ]);
     }
@@ -119,7 +119,7 @@ class PeopleController extends Controller
         Zttp::withHeaders(['Ocp-Apim-Subscription-Key' => env('AZURE_KEY')])
                         ->post('https://eastus2.api.cognitive.microsoft.com/face/v1.0/persongroups/person-data/train');
 
-        return redirect('/persons');
+        return redirect('/person');
     }
     public function trainStatus()
     {

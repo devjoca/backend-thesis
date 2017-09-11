@@ -8,7 +8,7 @@
                 <div class="panel-heading">Person Form</div>
 
                 <div class="panel-body">
-                    <form method="post" action="/persons/store">
+                    <form method="post" action="/person/store">
                         {{ csrf_field() }}
                         DNI: <input type="text" name="dni" value=""><br>
                         Name: <input type="text" name="name" value=""><br>
