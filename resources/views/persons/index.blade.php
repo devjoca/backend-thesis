@@ -23,6 +23,7 @@
                     <table class="table">
                         <tr>
                             <td>name</td>
+                            <td>lastname</td>
                             <td>dni</td>
                             <td>delete</td>
                             <td>photos</td>
@@ -33,17 +34,20 @@
                                     {{ $person['name'] }}
                                 </td>
                                 <td>
-                                    {{ $person['userData'] }}
+                                    {{ $person['lastname'] }}
                                 </td>
                                 <td>
-                                    <form method="post" action="/persons/delete">
+                                    {{ $person['dni'] }}
+                                </td>
+                                <td>
+                                    <form method="post" action="/person/delete">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="hidden" name="person_id" value="{{ $person['personId'] }}">
+                                        <input type="hidden" name="person_id" value="{{ $person['microsoft_person_id'] }}">
                                         <input type="submit" value="delete">
                                     </form>
                                 </td>
                                 <td>
-                                    <a href="/persons/{{ $person['personId'] }}/photo">Add photos</a>
+                                    <a href="/person/{{ $person['microsoft_person_id'] }}/photo">Add photos</a>
                                 </td>
                             </tr>
                         @endforeach

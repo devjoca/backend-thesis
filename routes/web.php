@@ -4,21 +4,21 @@ Auth::routes();
 
 Route::get('/', 'MapController@index');
 
-Route::group(['prefix' => 'persons'], function () {
-    Route::get('/', 'PersonsController@index');
+Route::group(['prefix' => 'person'], function () {
+    Route::get('/', 'PeopleController@index');
 
-    Route::get('/create', 'PersonsController@create');
-    Route::post('/store', 'PersonsController@store');
-    Route::post('/delete', 'PersonsController@delete');
+    Route::get('/create', 'PeopleController@create');
+    Route::post('/store', 'PeopleController@store');
+    Route::post('/delete', 'PeopleController@delete');
 
-    Route::get('/{person_id}/photo', 'PersonsController@showPhoto');
-    Route::post('/{person_id}/photo/store', 'PersonsController@storePhoto');
+    Route::get('/{person_id}/photo', 'PeopleController@showPhoto');
+    Route::post('/{person_id}/photo/store', 'PeopleController@storePhoto');
 
-    Route::get('/search', 'PersonsController@search');
-    Route::post('/detect', 'PersonsController@detect');
+    Route::get('/search', 'PeopleController@search');
+    Route::post('/detect', 'PeopleController@detect');
 
-    Route::get('/train', 'PersonsController@train');
-    Route::get('/train-status', 'PersonsController@trainStatus');
+    Route::get('/train', 'PeopleController@train');
+    Route::get('/train-status', 'PeopleController@trainStatus');
 });
 
 Route::get('/person-group/store', function() {

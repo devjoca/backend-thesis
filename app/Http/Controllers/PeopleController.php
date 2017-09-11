@@ -3,18 +3,29 @@
 namespace App\Http\Controllers;
 
 use Zttp\Zttp;
+use App\Person;
 use Illuminate\Http\Request;
 
-class PersonsController extends Controller
+class PeopleController extends Controller
 {
     public function index()
     {
         $training_req = Zttp::withHeaders(['Ocp-Apim-Subscription-Key' => env('AZURE_KEY')])
                             ->get('https://eastus2.api.cognitive.microsoft.com/face/v1.0/persongroups/person-data/training');
         $training_resp = $training_req->json();
-        $response = Zttp::withHeaders(['Ocp-Apim-Subscription-Key' => env('AZURE_KEY')])
-                        ->get('https://eastus2.api.cognitive.microsoft.com/face/v1.0/persongroups/person-data/persons?top=1000');
-        return view('persons.index', ['persons' => $response->json(), 'status' => $training_resp['status']]);
+        // $response = Zttp::withHeaders(['Ocp-Apim-Subscription-Key' => env('AZURE_KEY')])
+        //                 ->get('https://eastus2.api.cognitive.microsoft.com/face/v1.0/persongroups/person-data/persons?top=1000');
+        return view('persons.index', ['persons' => Person::all(), 'status' => $training_resp['status']]);
+    }
+
+    public function validateData()
+    {
+        return Person::where(['dni' => request('dni'), 'birthday' => request('birthday')])->firstOrFail();
+    }
+
+    public function findByDocument()
+    {
+        return Person::whereMicrosoftPersonId(request('microsoftPersonId'))->firstOrFail();
     }
 
     public function create()
