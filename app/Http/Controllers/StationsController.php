@@ -10,7 +10,7 @@ class StationsController extends Controller
 {
     public function index()
     {
-        return Station::all();
+        return Station::with('jurisdictions')->get();
     }
 
     public function findNear()

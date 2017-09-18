@@ -20,6 +20,10 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "vue2-google-maps": "^0.8.1"
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "vue2-google-maps": "^0.8.1",
+    "vue2-timepicker": "^0.1.4",
+    "vuejs-datepicker": "^0.9.13"
   }
 }
