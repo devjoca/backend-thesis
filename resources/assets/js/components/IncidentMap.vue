@@ -65,6 +65,8 @@ export default {
       return new google.maps.LatLng(incindent.lat, incindent.long);
     });
     vm.heatmap = new google.maps.visualization.HeatmapLayer({
+      radius: 12,
+      opacity: 0.6,
       data: points,
     })
 
