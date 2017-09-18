@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Station;
+use App\CriminalAct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -11,6 +12,23 @@ class StationsController extends Controller
     public function index()
     {
         return Station::with('jurisdictions')->get();
+    }
+
+    public function list()
+    {
+        return view('stations.index', ['stations' => Station::all()]);
+    }
+
+    public function listOfCriminalActs($station_id)
+    {
+        $station = Station::find($station_id);
+        $criminal_acts = CriminalAct::whereStationId($station_id)->with('station')->get();
+
+        $criminal_acts->map(function($ca) {
+            $ca['mapSrc'] = $ca->getMap();
+            return $ca;
+        });
+        return view('stations.criminal_acts', compact('criminal_acts', 'station'));
     }
 
     public function findNear()

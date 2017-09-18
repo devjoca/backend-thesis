@@ -61402,7 +61402,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
               });
 
               vm.heatmap = new google.maps.visualization.HeatmapLayer({
-                radius: 12,
+                radius: 17,
                 opacity: 0.6,
                 data: points
               });
