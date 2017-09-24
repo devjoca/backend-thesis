@@ -19,6 +19,8 @@ class CreateStationsTable extends Migration
             $table->string('description');
             $table->double('lat');
             $table->double('long');
+            $table->json('patrol_route')->nullable();
+
             $table->timestamps();
         });
     }

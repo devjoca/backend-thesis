@@ -39,6 +39,8 @@ import axios from 'axios';
 import { loaded } from 'vue2-google-maps';
 import VueTimepicker from 'vue2-timepicker';
 import Datepicker from 'vuejs-datepicker';
+import heatFunction from '../vendor/heatmap.gmaps.js';
+
 
 export default {
   components: {
@@ -48,6 +50,7 @@ export default {
   async mounted () {
     let vm = this;
     await loaded;
+    let HeatmapOverlay = heatFunction();
     const incidents = await axios.get('/api/incidents');
     const stations = await axios.get('/api/stations');
 
@@ -68,7 +71,15 @@ export default {
       radius: 17,
       opacity: 0.6,
       data: points,
-    })
+    });
+
+    let route = "pkthAfepuMc@hDKjBh@B~CP~BLjIf@`CVp@aFd@}DPcBz@Jp@J`@Hp@PZJBMEQBWb@iDT_BzHx@n@HC?UrAUpAq@fDUZsDqA}By@u@Q_Ca@a@EcCE}@CkFYuCOc@I{@QcAUMLa@~@Ul@S~@SlA";
+    var decodedPath = google.maps.geometry.encoding.decodePath(route);
+
+    const routePath = new google.maps.Polyline({
+      path:decodedPath
+    });
+    routePath.setMap(this.$refs.map.$mapObject);
 
     vm.heatmap.setMap(this.$refs.map.$mapObject);
   },
