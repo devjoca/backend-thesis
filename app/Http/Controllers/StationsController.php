@@ -14,6 +14,11 @@ class StationsController extends Controller
         return Station::with('jurisdictions')->get();
     }
 
+    public function find($station_id)
+    {
+        return Station::with('jurisdictions')->find($station_id);
+    }
+
     public function list()
     {
         return view('stations.index', ['stations' => Station::all()]);
@@ -51,5 +56,10 @@ class StationsController extends Controller
                 ->take(5)
                 ->get();
 
+    }
+
+    public function hotspots($station_id)
+    {
+        return view('stations.hotspots-map', ['station'=> Station::find($station_id)]);
     }
 }

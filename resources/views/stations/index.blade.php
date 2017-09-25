@@ -14,6 +14,7 @@
                             <th>Nombre</th>
                             <th>Descripción</th>
                             <th></th>
+                            <th></th>
                         </tr>
                         @foreach($stations as $station)
                             <tr>
@@ -21,6 +22,7 @@
                                 <td>{{ $station->name }}</td>
                                 <td>{{ $station->description }}</td>
                                 <td><a href="/comisarias/{{ $station->id }}/atenciones">Pedidos de atención </a></td>
+                                <td><a href="/comisarias/{{ $station->id }}/puntos-conflicto">Puntos de conflicto </a></td>
                             </tr>
                         @endforeach
                     </table>

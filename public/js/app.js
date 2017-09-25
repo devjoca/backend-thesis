@@ -18073,6 +18073,7 @@ window.Vue = __webpack_require__(148);
 
 Vue.component('example', __webpack_require__(583));
 Vue.component('incident-map', __webpack_require__(586));
+Vue.component('station-map', __webpack_require__(639));
 
 var app = new Vue({
   el: '#app'
@@ -63013,6 +63014,202 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 631 */,
+/* 632 */,
+/* 633 */,
+/* 634 */,
+/* 635 */,
+/* 636 */,
+/* 637 */,
+/* 638 */,
+/* 639 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(37)
+/* script */
+var __vue_script__ = __webpack_require__(641)
+/* template */
+var __vue_template__ = __webpack_require__(640)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/StationMap.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] StationMap.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7b00fbac", Component.options)
+  } else {
+    hotAPI.reload("data-v-7b00fbac", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 640 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "gmap-map",
+        {
+          ref: "map",
+          staticStyle: { width: "100%", height: "500px" },
+          attrs: {
+            center: {
+              lat: parseFloat(_vm.center_lat),
+              lng: parseFloat(_vm.center_lng)
+            },
+            zoom: 14
+          }
+        },
+        [
+          _c("gmap-marker", {
+            attrs: {
+              position: {
+                lat: parseFloat(_vm.center_lat),
+                lng: parseFloat(_vm.center_lng)
+              },
+              clickable: true,
+              draggable: false
+            }
+          })
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-7b00fbac", module.exports)
+  }
+}
+
+/***/ }),
+/* 641 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _axios = __webpack_require__(211);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _vue2GoogleMaps = __webpack_require__(94);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; } //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+  props: ['center_lat', 'center_lng', 'id'],
+  mounted: function mounted() {
+    var _this = this;
+
+    return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+      var incidents, station, geoJson, json, jurisdiction, points;
+      return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return _vue2GoogleMaps.loaded;
+
+            case 2:
+              _context.next = 4;
+              return _axios2.default.get('/api/incidents');
+
+            case 4:
+              incidents = _context.sent;
+              _context.next = 7;
+              return _axios2.default.get('/api/stations/' + _this.id);
+
+            case 7:
+              station = _context.sent;
+              geoJson = JSON.parse(station.data.jurisdictions.geojson);
+              json = _this.$refs.map.$mapObject.data.addGeoJson(geoJson);
+              jurisdiction = new google.maps.Polygon({ paths: json[0].getGeometry().getArray() });
+              points = _.filter(incidents.data, function (incindent) {
+                var location = new google.maps.LatLng(incindent.lat, incindent.long);
+                return google.maps.geometry.poly.containsLocation(location, jurisdiction);
+              });
+
+
+              points = _.map(points, function (incindent) {
+                return new google.maps.LatLng(incindent.lat, incindent.long);
+              });
+              _this.heatmap = new google.maps.visualization.HeatmapLayer({
+                data: points
+              });
+
+              _this.heatmap.setMap(_this.$refs.map.$mapObject);
+
+            case 15:
+            case 'end':
+              return _context.stop();
+          }
+        }
+      }, _callee, _this);
+    }))();
+  }
+};
 
 /***/ })
 /******/ ]);
