@@ -70,14 +70,14 @@ export default {
       data: points,
     });
 
-    let route = "pkthAfepuMc@hDKjBh@B~CP~BLjIf@`CVp@aFd@}DPcBz@Jp@J`@Hp@PZJBMEQBWb@iDT_BzHx@n@HC?UrAUpAq@fDUZsDqA}By@u@Q_Ca@a@EcCE}@CkFYuCOc@I{@QcAUMLa@~@Ul@S~@SlA";
-    var decodedPath = google.maps.geometry.encoding.decodePath(route);
+    // let route = "pkthAfepuMc@hDKjBh@B~CP~BLjIf@`CVp@aFd@}DPcBz@Jp@J`@Hp@PZJBMEQBWb@iDT_BzHx@n@HC?UrAUpAq@fDUZsDqA}By@u@Q_Ca@a@EcCE}@CkFYuCOc@I{@QcAUMLa@~@Ul@S~@SlA";
+    // var decodedPath = google.maps.geometry.encoding.decodePath(route);
 
-    const routePath = new google.maps.Polyline({
-      path:decodedPath
-    });
+    // const routePath = new google.maps.Polyline({
+    //   path:decodedPath
+    // });
 
-    routePath.setMap(this.$refs.map.$mapObject);
+    // routePath.setMap(this.$refs.map.$mapObject);
     vm.heatmap.setMap(this.$refs.map.$mapObject);
   },
   data () {

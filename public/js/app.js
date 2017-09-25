@@ -30967,6 +30967,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 var token = document.head.querySelector('meta[name="csrf-token"]');
 var gmaps_key = document.head.querySelector('meta[name="gmaps-key"]').content;
+window.mapbox_key = document.head.querySelector('meta[name="mapbox-key"]').content;
 
 if (token) {
     window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
@@ -74264,7 +74265,7 @@ exports.default = {
     var _this = this;
 
     return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-      var vm, incidents, stations, points, route, decodedPath, routePath;
+      var vm, incidents, stations, points;
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -74306,17 +74307,17 @@ exports.default = {
                 data: points
               });
 
-              route = "pkthAfepuMc@hDKjBh@B~CP~BLjIf@`CVp@aFd@}DPcBz@Jp@J`@Hp@PZJBMEQBWb@iDT_BzHx@n@HC?UrAUpAq@fDUZsDqA}By@u@Q_Ca@a@EcCE}@CkFYuCOc@I{@QcAUMLa@~@Ul@S~@SlA";
-              decodedPath = google.maps.geometry.encoding.decodePath(route);
-              routePath = new google.maps.Polyline({
-                path: decodedPath
-              });
+              // let route = "pkthAfepuMc@hDKjBh@B~CP~BLjIf@`CVp@aFd@}DPcBz@Jp@J`@Hp@PZJBMEQBWb@iDT_BzHx@n@HC?UrAUpAq@fDUZsDqA}By@u@Q_Ca@a@EcCE}@CkFYuCOc@I{@QcAUMLa@~@Ul@S~@SlA";
+              // var decodedPath = google.maps.geometry.encoding.decodePath(route);
 
+              // const routePath = new google.maps.Polyline({
+              //   path:decodedPath
+              // });
 
-              routePath.setMap(_this.$refs.map.$mapObject);
+              // routePath.setMap(this.$refs.map.$mapObject);
               vm.heatmap.setMap(_this.$refs.map.$mapObject);
 
-            case 17:
+            case 13:
             case 'end':
               return _context.stop();
           }
@@ -75892,7 +75893,38 @@ exports.default = {
       });
     },
     generateRoute: function generateRoute() {
-      console.log('a');
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+        var coordinates, route, decodedPath, routePath;
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                coordinates = _.reduce(_this2.markers, function (string, m) {
+                  console.log(m);
+                  return string + ';' + m.position.lng + ',' + m.position.lat;
+                }, _this2.center_lng + ',' + _this2.center_lat);
+                _context2.next = 3;
+                return _axios2.default.get('https://api.mapbox.com/optimized-trips/v1/mapbox/driving/' + coordinates + '?roundtrip=true&access_token=' + mapbox_key);
+
+              case 3:
+                route = _context2.sent;
+                decodedPath = google.maps.geometry.encoding.decodePath(route.data.trips[0].geometry);
+                routePath = new google.maps.Polyline({
+                  path: decodedPath
+                });
+
+
+                routePath.setMap(_this2.$refs.map.$mapObject);
+
+              case 7:
+              case 'end':
+                return _context2.stop();
+            }
+          }
+        }, _callee2, _this2);
+      }))();
     }
   }
 

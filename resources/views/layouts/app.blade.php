@@ -8,6 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="gmaps-key" content="{{ env('GMAPS_KEY') }}">
+    <meta name="mapbox-key" content="{{ env('MAPBOX_TOKEN') }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 

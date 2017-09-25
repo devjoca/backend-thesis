@@ -79,8 +79,20 @@ export default {
         });
       });
     },
-    generateRoute () {
-      console.log('a');
+    async generateRoute () {
+      let coordinates = _.reduce(this.markers, (string, m) => {
+        console.log(m)
+        return `${string};${m.position.lng},${m.position.lat}`;
+      }, `${this.center_lng},${this.center_lat}`);
+      const route = await axios.get(`https://api.mapbox.com/optimized-trips/v1/mapbox/driving/${coordinates}?roundtrip=true&access_token=${mapbox_key}`);
+      var decodedPath = google.maps.geometry.encoding.decodePath(route.data.trips[0].geometry);
+
+      const routePath = new google.maps.Polyline({
+        path:decodedPath
+      });
+
+      routePath.setMap(this.$refs.map.$mapObject);
+
     }
   }
 
