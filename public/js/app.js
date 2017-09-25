@@ -75814,12 +75814,14 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
 
 exports.default = {
   props: ['center_lat', 'center_lng', 'id'],
   data: function data() {
     return {
-      markers: []
+      markers: [],
+      markerUrl: '/markers/police.png'
     };
   },
   mounted: function mounted() {
@@ -75902,7 +75904,6 @@ exports.default = {
             switch (_context2.prev = _context2.next) {
               case 0:
                 coordinates = _.reduce(_this2.markers, function (string, m) {
-                  console.log(m);
                   return string + ';' + m.position.lng + ',' + m.position.lat;
                 }, _this2.center_lng + ',' + _this2.center_lat);
                 _context2.next = 3;
@@ -75912,7 +75913,9 @@ exports.default = {
                 route = _context2.sent;
                 decodedPath = google.maps.geometry.encoding.decodePath(route.data.trips[0].geometry);
                 routePath = new google.maps.Polyline({
-                  path: decodedPath
+                  path: decodedPath,
+                  strokeColor: '#FF0000',
+                  fillOpacity: 0.35
                 });
 
 
@@ -100538,6 +100541,7 @@ var render = function() {
                 lng: parseFloat(_vm.center_lng)
               },
               clickable: true,
+              icon: _vm.markerUrl,
               draggable: false
             }
           }),
