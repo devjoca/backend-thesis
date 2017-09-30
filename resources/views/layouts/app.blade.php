@@ -40,8 +40,12 @@
                     @if(Auth::check())
                         <ul class="nav navbar-nav">
                             <li><a href="{{ url('/comisarias') }}">Comisarias</a></li>
+                            <li><a href="{{ url('/desarrolladores/solicitudes') }}">Solitudes de desarrollador</a></li>
                         </ul>
                     @endif
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{ url('/desarrolladores') }}">Desarrolladores</a></li>
+                    </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">

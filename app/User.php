@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -15,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'user_type_id',
     ];
 
     /**
@@ -26,4 +27,25 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function scopeApplicant($query)
+    {
+        return $query->whereNull('approved_date')->whereUserTypeId(UserType::DEVELOPER);
+    }
+
+    public static function createDeveloper($name, $email)
+    {
+        self::create([
+            'name' => $name,
+            'email' => $email,
+            'password' => '',
+            'user_type_id' => UserType::DEVELOPER,
+        ]);
+    }
+
+    public function approveAsDeveloper()
+    {
+        $this->approved_date = Carbon::now();
+        $this->save();
+    }
 }

@@ -25,7 +25,12 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/comisarias', 'StationsController@list');
     Route::get('/comisarias/{station_id}/atenciones', 'StationsController@listOfCriminalActs');
     Route::get('/comisarias/{station_id}/puntos-conflicto', 'StationsController@hotspots');
+    Route::get('/desarrolladores/{developer_id}/aprobar', 'DevelopersController@approve');
 });
+
+Route::get('/desarrolladores', 'DevelopersController@index');
+Route::post('/desarrolladores/aplicar', 'DevelopersController@apply');
+Route::get('/desarrolladores/solicitudes', 'DevelopersController@applies');
 
 Route::get('/person-group/store', function() {
     $response = Zttp\Zttp::withHeaders(['Ocp-Apim-Subscription-Key' => env('AZURE_KEY')])
