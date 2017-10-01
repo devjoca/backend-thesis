@@ -4,6 +4,9 @@ namespace App;
 
 use Illuminate\Support\Carbon;
 use Illuminate\Notifications\Notifiable;
+use App\Notifications\ResetPasswordNotification;
+use Illuminate\Auth\Passwords\DatabaseTokenRepository;
+use Illuminate\Auth\Passwords\TokenRepositoryInterface;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -47,5 +50,10 @@ class User extends Authenticatable
     {
         $this->approved_date = Carbon::now();
         $this->save();
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPasswordNotification($token));
     }
 }

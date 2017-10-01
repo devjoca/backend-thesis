@@ -30927,9 +30927,13 @@ window.Vue = __webpack_require__(206);
 Vue.component('example', __webpack_require__(695));
 Vue.component('incident-map', __webpack_require__(698));
 Vue.component('station-map', __webpack_require__(740));
+Vue.component('passport-clients', __webpack_require__(933));
 
+Vue.component('passport-authorized-clients', __webpack_require__(938));
+
+Vue.component('passport-personal-access-tokens', __webpack_require__(943));
 var app = new Vue({
-  el: '#app'
+    el: '#app'
 });
 
 /***/ }),
@@ -100607,6 +100611,2132 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 925 */,
+/* 926 */,
+/* 927 */,
+/* 928 */,
+/* 929 */,
+/* 930 */,
+/* 931 */,
+/* 932 */,
+/* 933 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(934)
+}
+var normalizeComponent = __webpack_require__(42)
+/* script */
+var __vue_script__ = __webpack_require__(936)
+/* template */
+var __vue_template__ = __webpack_require__(937)
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-3aca8b26"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/passport/Clients.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Clients.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3aca8b26", Component.options)
+  } else {
+    hotAPI.reload("data-v-3aca8b26", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 934 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(935);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(84)("05b25aa0", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3aca8b26\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Clients.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3aca8b26\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Clients.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 935 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(70)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.action-link[data-v-3aca8b26] {\n    cursor: pointer;\n}\n.m-b-none[data-v-3aca8b26] {\n    margin-bottom: 0;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 936 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+    /*
+     * The component's data.
+     */
+    data: function data() {
+        return {
+            clients: [],
+
+            createForm: {
+                errors: [],
+                name: '',
+                redirect: ''
+            },
+
+            editForm: {
+                errors: [],
+                name: '',
+                redirect: ''
+            }
+        };
+    },
+
+
+    /**
+     * Prepare the component (Vue 1.x).
+     */
+    ready: function ready() {
+        this.prepareComponent();
+    },
+
+
+    /**
+     * Prepare the component (Vue 2.x).
+     */
+    mounted: function mounted() {
+        this.prepareComponent();
+    },
+
+
+    methods: {
+        /**
+         * Prepare the component.
+         */
+        prepareComponent: function prepareComponent() {
+            this.getClients();
+
+            $('#modal-create-client').on('shown.bs.modal', function () {
+                $('#create-client-name').focus();
+            });
+
+            $('#modal-edit-client').on('shown.bs.modal', function () {
+                $('#edit-client-name').focus();
+            });
+        },
+
+
+        /**
+         * Get all of the OAuth clients for the user.
+         */
+        getClients: function getClients() {
+            var _this = this;
+
+            axios.get('/oauth/clients').then(function (response) {
+                _this.clients = response.data;
+            });
+        },
+
+
+        /**
+         * Show the form for creating new clients.
+         */
+        showCreateClientForm: function showCreateClientForm() {
+            $('#modal-create-client').modal('show');
+        },
+
+
+        /**
+         * Create a new OAuth client for the user.
+         */
+        store: function store() {
+            this.persistClient('post', '/oauth/clients', this.createForm, '#modal-create-client');
+        },
+
+
+        /**
+         * Edit the given client.
+         */
+        edit: function edit(client) {
+            this.editForm.id = client.id;
+            this.editForm.name = client.name;
+            this.editForm.redirect = client.redirect;
+
+            $('#modal-edit-client').modal('show');
+        },
+
+
+        /**
+         * Update the client being edited.
+         */
+        update: function update() {
+            this.persistClient('put', '/oauth/clients/' + this.editForm.id, this.editForm, '#modal-edit-client');
+        },
+
+
+        /**
+         * Persist the client to storage using the given form.
+         */
+        persistClient: function persistClient(method, uri, form, modal) {
+            var _this2 = this;
+
+            form.errors = [];
+
+            axios[method](uri, form).then(function (response) {
+                _this2.getClients();
+
+                form.name = '';
+                form.redirect = '';
+                form.errors = [];
+
+                $(modal).modal('hide');
+            }).catch(function (error) {
+                if (_typeof(error.response.data) === 'object') {
+                    form.errors = _.flatten(_.toArray(error.response.data));
+                } else {
+                    form.errors = ['Something went wrong. Please try again.'];
+                }
+            });
+        },
+
+
+        /**
+         * Destroy the given client.
+         */
+        destroy: function destroy(client) {
+            var _this3 = this;
+
+            axios.delete('/oauth/clients/' + client.id).then(function (response) {
+                _this3.getClients();
+            });
+        }
+    }
+};
+
+/***/ }),
+/* 937 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "panel panel-default" }, [
+      _c("div", { staticClass: "panel-heading" }, [
+        _c(
+          "div",
+          {
+            staticStyle: {
+              display: "flex",
+              "justify-content": "space-between",
+              "align-items": "center"
+            }
+          },
+          [
+            _c("span", [
+              _vm._v("\n                    OAuth Clients\n                ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "action-link",
+                on: { click: _vm.showCreateClientForm }
+              },
+              [
+                _vm._v(
+                  "\n                    Create New Client\n                "
+                )
+              ]
+            )
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "panel-body" }, [
+        _vm.clients.length === 0
+          ? _c("p", { staticClass: "m-b-none" }, [
+              _vm._v(
+                "\n                You have not created any OAuth clients.\n            "
+              )
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.clients.length > 0
+          ? _c("table", { staticClass: "table table-borderless m-b-none" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.clients, function(client) {
+                  return _c("tr", [
+                    _c("td", { staticStyle: { "vertical-align": "middle" } }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(client.id) +
+                          "\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticStyle: { "vertical-align": "middle" } }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(client.name) +
+                          "\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticStyle: { "vertical-align": "middle" } }, [
+                      _c("code", [_vm._v(_vm._s(client.secret))])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticStyle: { "vertical-align": "middle" } }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "action-link",
+                          on: {
+                            click: function($event) {
+                              _vm.edit(client)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                Edit\n                            "
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticStyle: { "vertical-align": "middle" } }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "action-link text-danger",
+                          on: {
+                            click: function($event) {
+                              _vm.destroy(client)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                Delete\n                            "
+                          )
+                        ]
+                      )
+                    ])
+                  ])
+                })
+              )
+            ])
+          : _vm._e()
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: { id: "modal-create-client", tabindex: "-1", role: "dialog" }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _vm.createForm.errors.length > 0
+                ? _c("div", { staticClass: "alert alert-danger" }, [
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c(
+                      "ul",
+                      _vm._l(_vm.createForm.errors, function(error) {
+                        return _c("li", [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(error) +
+                              "\n                            "
+                          )
+                        ])
+                      })
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "form",
+                { staticClass: "form-horizontal", attrs: { role: "form" } },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { staticClass: "col-md-3 control-label" }, [
+                      _vm._v("Name")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-7" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.createForm.name,
+                            expression: "createForm.name"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { id: "create-client-name", type: "text" },
+                        domProps: { value: _vm.createForm.name },
+                        on: {
+                          keyup: function($event) {
+                            if (
+                              !("button" in $event) &&
+                              _vm._k($event.keyCode, "enter", 13)
+                            ) {
+                              return null
+                            }
+                            _vm.store($event)
+                          },
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.createForm.name = $event.target.value
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "help-block" }, [
+                        _vm._v(
+                          "\n                                    Something your users will recognize and trust.\n                                "
+                        )
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { staticClass: "col-md-3 control-label" }, [
+                      _vm._v("Redirect URL")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-7" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.createForm.redirect,
+                            expression: "createForm.redirect"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text", name: "redirect" },
+                        domProps: { value: _vm.createForm.redirect },
+                        on: {
+                          keyup: function($event) {
+                            if (
+                              !("button" in $event) &&
+                              _vm._k($event.keyCode, "enter", 13)
+                            ) {
+                              return null
+                            }
+                            _vm.store($event)
+                          },
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.createForm.redirect = $event.target.value
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "help-block" }, [
+                        _vm._v(
+                          "\n                                    Your application's authorization callback URL.\n                                "
+                        )
+                      ])
+                    ])
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-footer" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-default",
+                  attrs: { type: "button", "data-dismiss": "modal" }
+                },
+                [_vm._v("Close")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { type: "button" },
+                  on: { click: _vm.store }
+                },
+                [
+                  _vm._v(
+                    "\n                        Create\n                    "
+                  )
+                ]
+              )
+            ])
+          ])
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: { id: "modal-edit-client", tabindex: "-1", role: "dialog" }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(3),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _vm.editForm.errors.length > 0
+                ? _c("div", { staticClass: "alert alert-danger" }, [
+                    _vm._m(4),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c(
+                      "ul",
+                      _vm._l(_vm.editForm.errors, function(error) {
+                        return _c("li", [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(error) +
+                              "\n                            "
+                          )
+                        ])
+                      })
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "form",
+                { staticClass: "form-horizontal", attrs: { role: "form" } },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { staticClass: "col-md-3 control-label" }, [
+                      _vm._v("Name")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-7" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.editForm.name,
+                            expression: "editForm.name"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { id: "edit-client-name", type: "text" },
+                        domProps: { value: _vm.editForm.name },
+                        on: {
+                          keyup: function($event) {
+                            if (
+                              !("button" in $event) &&
+                              _vm._k($event.keyCode, "enter", 13)
+                            ) {
+                              return null
+                            }
+                            _vm.update($event)
+                          },
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.editForm.name = $event.target.value
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "help-block" }, [
+                        _vm._v(
+                          "\n                                    Something your users will recognize and trust.\n                                "
+                        )
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { staticClass: "col-md-3 control-label" }, [
+                      _vm._v("Redirect URL")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-7" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.editForm.redirect,
+                            expression: "editForm.redirect"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text", name: "redirect" },
+                        domProps: { value: _vm.editForm.redirect },
+                        on: {
+                          keyup: function($event) {
+                            if (
+                              !("button" in $event) &&
+                              _vm._k($event.keyCode, "enter", 13)
+                            ) {
+                              return null
+                            }
+                            _vm.update($event)
+                          },
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.editForm.redirect = $event.target.value
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "help-block" }, [
+                        _vm._v(
+                          "\n                                    Your application's authorization callback URL.\n                                "
+                        )
+                      ])
+                    ])
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-footer" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-default",
+                  attrs: { type: "button", "data-dismiss": "modal" }
+                },
+                [_vm._v("Close")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { type: "button" },
+                  on: { click: _vm.update }
+                },
+                [
+                  _vm._v(
+                    "\n                        Save Changes\n                    "
+                  )
+                ]
+              )
+            ])
+          ])
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Client ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Secret")]),
+        _vm._v(" "),
+        _c("th"),
+        _vm._v(" "),
+        _c("th")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button ",
+            "data-dismiss": "modal",
+            "aria-hidden": "true"
+          }
+        },
+        [_vm._v("×")]
+      ),
+      _vm._v(" "),
+      _c("h4", { staticClass: "modal-title" }, [
+        _vm._v("\n                        Create Client\n                    ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _c("strong", [_vm._v("Whoops!")]),
+      _vm._v(" Something went wrong!")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button ",
+            "data-dismiss": "modal",
+            "aria-hidden": "true"
+          }
+        },
+        [_vm._v("×")]
+      ),
+      _vm._v(" "),
+      _c("h4", { staticClass: "modal-title" }, [
+        _vm._v("\n                        Edit Client\n                    ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _c("strong", [_vm._v("Whoops!")]),
+      _vm._v(" Something went wrong!")
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-3aca8b26", module.exports)
+  }
+}
+
+/***/ }),
+/* 938 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(939)
+}
+var normalizeComponent = __webpack_require__(42)
+/* script */
+var __vue_script__ = __webpack_require__(941)
+/* template */
+var __vue_template__ = __webpack_require__(942)
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-03fc5192"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/passport/AuthorizedClients.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] AuthorizedClients.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-03fc5192", Component.options)
+  } else {
+    hotAPI.reload("data-v-03fc5192", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 939 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(940);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(84)("fcc20e94", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-03fc5192\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AuthorizedClients.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-03fc5192\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AuthorizedClients.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 940 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(70)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.action-link[data-v-03fc5192] {\n    cursor: pointer;\n}\n.m-b-none[data-v-03fc5192] {\n    margin-bottom: 0;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 941 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+    /*
+     * The component's data.
+     */
+    data: function data() {
+        return {
+            tokens: []
+        };
+    },
+
+
+    /**
+     * Prepare the component (Vue 1.x).
+     */
+    ready: function ready() {
+        this.prepareComponent();
+    },
+
+
+    /**
+     * Prepare the component (Vue 2.x).
+     */
+    mounted: function mounted() {
+        this.prepareComponent();
+    },
+
+
+    methods: {
+        /**
+         * Prepare the component (Vue 2.x).
+         */
+        prepareComponent: function prepareComponent() {
+            this.getTokens();
+        },
+
+
+        /**
+         * Get all of the authorized tokens for the user.
+         */
+        getTokens: function getTokens() {
+            var _this = this;
+
+            axios.get('/oauth/tokens').then(function (response) {
+                _this.tokens = response.data;
+            });
+        },
+
+
+        /**
+         * Revoke the given token.
+         */
+        revoke: function revoke(token) {
+            var _this2 = this;
+
+            axios.delete('/oauth/tokens/' + token.id).then(function (response) {
+                _this2.getTokens();
+            });
+        }
+    }
+};
+
+/***/ }),
+/* 942 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.tokens.length > 0
+      ? _c("div", [
+          _c("div", { staticClass: "panel panel-default" }, [
+            _c("div", { staticClass: "panel-heading" }, [
+              _vm._v("Authorized Applications")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "panel-body" }, [
+              _c("table", { staticClass: "table table-borderless m-b-none" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.tokens, function(token) {
+                    return _c("tr", [
+                      _c(
+                        "td",
+                        { staticStyle: { "vertical-align": "middle" } },
+                        [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(token.client.name) +
+                              "\n                            "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        { staticStyle: { "vertical-align": "middle" } },
+                        [
+                          token.scopes.length > 0
+                            ? _c("span", [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(token.scopes.join(", ")) +
+                                    "\n                                "
+                                )
+                              ])
+                            : _vm._e()
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        { staticStyle: { "vertical-align": "middle" } },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "action-link text-danger",
+                              on: {
+                                click: function($event) {
+                                  _vm.revoke(token)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                    Revoke\n                                "
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ])
+                  })
+                )
+              ])
+            ])
+          ])
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Scopes")]),
+        _vm._v(" "),
+        _c("th")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-03fc5192", module.exports)
+  }
+}
+
+/***/ }),
+/* 943 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(944)
+}
+var normalizeComponent = __webpack_require__(42)
+/* script */
+var __vue_script__ = __webpack_require__(946)
+/* template */
+var __vue_template__ = __webpack_require__(947)
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-1a99b969"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/passport/PersonalAccessTokens.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] PersonalAccessTokens.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1a99b969", Component.options)
+  } else {
+    hotAPI.reload("data-v-1a99b969", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 944 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(945);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(84)("34a4a23e", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1a99b969\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PersonalAccessTokens.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1a99b969\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PersonalAccessTokens.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 945 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(70)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.action-link[data-v-1a99b969] {\n    cursor: pointer;\n}\n.m-b-none[data-v-1a99b969] {\n    margin-bottom: 0;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 946 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+    /*
+     * The component's data.
+     */
+    data: function data() {
+        return {
+            accessToken: null,
+
+            tokens: [],
+            scopes: [],
+
+            form: {
+                name: '',
+                scopes: [],
+                errors: []
+            }
+        };
+    },
+
+
+    /**
+     * Prepare the component (Vue 1.x).
+     */
+    ready: function ready() {
+        this.prepareComponent();
+    },
+
+
+    /**
+     * Prepare the component (Vue 2.x).
+     */
+    mounted: function mounted() {
+        this.prepareComponent();
+    },
+
+
+    methods: {
+        /**
+         * Prepare the component.
+         */
+        prepareComponent: function prepareComponent() {
+            this.getTokens();
+            this.getScopes();
+
+            $('#modal-create-token').on('shown.bs.modal', function () {
+                $('#create-token-name').focus();
+            });
+        },
+
+
+        /**
+         * Get all of the personal access tokens for the user.
+         */
+        getTokens: function getTokens() {
+            var _this = this;
+
+            axios.get('/oauth/personal-access-tokens').then(function (response) {
+                _this.tokens = response.data;
+            });
+        },
+
+
+        /**
+         * Get all of the available scopes.
+         */
+        getScopes: function getScopes() {
+            var _this2 = this;
+
+            axios.get('/oauth/scopes').then(function (response) {
+                _this2.scopes = response.data;
+            });
+        },
+
+
+        /**
+         * Show the form for creating new tokens.
+         */
+        showCreateTokenForm: function showCreateTokenForm() {
+            $('#modal-create-token').modal('show');
+        },
+
+
+        /**
+         * Create a new personal access token.
+         */
+        store: function store() {
+            var _this3 = this;
+
+            this.accessToken = null;
+
+            this.form.errors = [];
+
+            axios.post('/oauth/personal-access-tokens', this.form).then(function (response) {
+                _this3.form.name = '';
+                _this3.form.scopes = [];
+                _this3.form.errors = [];
+
+                _this3.tokens.push(response.data.token);
+
+                _this3.showAccessToken(response.data.accessToken);
+            }).catch(function (error) {
+                if (_typeof(error.response.data) === 'object') {
+                    _this3.form.errors = _.flatten(_.toArray(error.response.data));
+                } else {
+                    _this3.form.errors = ['Something went wrong. Please try again.'];
+                }
+            });
+        },
+
+
+        /**
+         * Toggle the given scope in the list of assigned scopes.
+         */
+        toggleScope: function toggleScope(scope) {
+            if (this.scopeIsAssigned(scope)) {
+                this.form.scopes = _.reject(this.form.scopes, function (s) {
+                    return s == scope;
+                });
+            } else {
+                this.form.scopes.push(scope);
+            }
+        },
+
+
+        /**
+         * Determine if the given scope has been assigned to the token.
+         */
+        scopeIsAssigned: function scopeIsAssigned(scope) {
+            return _.indexOf(this.form.scopes, scope) >= 0;
+        },
+
+
+        /**
+         * Show the given access token to the user.
+         */
+        showAccessToken: function showAccessToken(accessToken) {
+            $('#modal-create-token').modal('hide');
+
+            this.accessToken = accessToken;
+
+            $('#modal-access-token').modal('show');
+        },
+
+
+        /**
+         * Revoke the given token.
+         */
+        revoke: function revoke(token) {
+            var _this4 = this;
+
+            axios.delete('/oauth/personal-access-tokens/' + token.id).then(function (response) {
+                _this4.getTokens();
+            });
+        }
+    }
+};
+
+/***/ }),
+/* 947 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", [
+      _c("div", { staticClass: "panel panel-default" }, [
+        _c("div", { staticClass: "panel-heading" }, [
+          _c(
+            "div",
+            {
+              staticStyle: {
+                display: "flex",
+                "justify-content": "space-between",
+                "align-items": "center"
+              }
+            },
+            [
+              _c("span", [
+                _vm._v(
+                  "\n                        Personal Access Tokens\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "action-link",
+                  on: { click: _vm.showCreateTokenForm }
+                },
+                [
+                  _vm._v(
+                    "\n                        Create New Token\n                    "
+                  )
+                ]
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "panel-body" }, [
+          _vm.tokens.length === 0
+            ? _c("p", { staticClass: "m-b-none" }, [
+                _vm._v(
+                  "\n                    You have not created any personal access tokens.\n                "
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.tokens.length > 0
+            ? _c("table", { staticClass: "table table-borderless m-b-none" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.tokens, function(token) {
+                    return _c("tr", [
+                      _c(
+                        "td",
+                        { staticStyle: { "vertical-align": "middle" } },
+                        [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(token.name) +
+                              "\n                            "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        { staticStyle: { "vertical-align": "middle" } },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "action-link text-danger",
+                              on: {
+                                click: function($event) {
+                                  _vm.revoke(token)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                    Delete\n                                "
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ])
+                  })
+                )
+              ])
+            : _vm._e()
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: { id: "modal-create-token", tabindex: "-1", role: "dialog" }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _vm.form.errors.length > 0
+                ? _c("div", { staticClass: "alert alert-danger" }, [
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c(
+                      "ul",
+                      _vm._l(_vm.form.errors, function(error) {
+                        return _c("li", [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(error) +
+                              "\n                            "
+                          )
+                        ])
+                      })
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  staticClass: "form-horizontal",
+                  attrs: { role: "form" },
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      _vm.store($event)
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { staticClass: "col-md-4 control-label" }, [
+                      _vm._v("Name")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.name,
+                            expression: "form.name"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          id: "create-token-name",
+                          type: "text",
+                          name: "name"
+                        },
+                        domProps: { value: _vm.form.name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.form.name = $event.target.value
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm.scopes.length > 0
+                    ? _c("div", { staticClass: "form-group" }, [
+                        _c("label", { staticClass: "col-md-4 control-label" }, [
+                          _vm._v("Scopes")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col-md-6" },
+                          _vm._l(_vm.scopes, function(scope) {
+                            return _c("div", [
+                              _c("div", { staticClass: "checkbox" }, [
+                                _c("label", [
+                                  _c("input", {
+                                    attrs: { type: "checkbox" },
+                                    domProps: {
+                                      checked: _vm.scopeIsAssigned(scope.id)
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.toggleScope(scope.id)
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(
+                                    "\n\n                                                " +
+                                      _vm._s(scope.id) +
+                                      "\n                                        "
+                                  )
+                                ])
+                              ])
+                            ])
+                          })
+                        )
+                      ])
+                    : _vm._e()
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-footer" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-default",
+                  attrs: { type: "button", "data-dismiss": "modal" }
+                },
+                [_vm._v("Close")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { type: "button" },
+                  on: { click: _vm.store }
+                },
+                [
+                  _vm._v(
+                    "\n                        Create\n                    "
+                  )
+                ]
+              )
+            ])
+          ])
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: { id: "modal-access-token", tabindex: "-1", role: "dialog" }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(3),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("p", [
+                _vm._v(
+                  "\n                        Here is your new personal access token. This is the only time it will be shown so don't lose it!\n                        You may now use this token to make API requests.\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c("pre", [_c("code", [_vm._v(_vm._s(_vm.accessToken))])])
+            ]),
+            _vm._v(" "),
+            _vm._m(4)
+          ])
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [_c("th", [_vm._v("Name")]), _vm._v(" "), _c("th")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button ",
+            "data-dismiss": "modal",
+            "aria-hidden": "true"
+          }
+        },
+        [_vm._v("×")]
+      ),
+      _vm._v(" "),
+      _c("h4", { staticClass: "modal-title" }, [
+        _vm._v("\n                        Create Token\n                    ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _c("strong", [_vm._v("Whoops!")]),
+      _vm._v(" Something went wrong!")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button ",
+            "data-dismiss": "modal",
+            "aria-hidden": "true"
+          }
+        },
+        [_vm._v("×")]
+      ),
+      _vm._v(" "),
+      _c("h4", { staticClass: "modal-title" }, [
+        _vm._v(
+          "\n                        Personal Access Token\n                    "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-default",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1a99b969", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

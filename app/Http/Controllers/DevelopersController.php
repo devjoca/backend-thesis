@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Password;
 use Illuminate\Http\Request;
 
 class DevelopersController extends Controller
@@ -29,7 +30,9 @@ class DevelopersController extends Controller
     public function approve($developer_id)
     {
         $user = User::find($developer_id);
-        $user->approveAsDeveloper();
+        // $user->approveAsDeveloper();
+
+        Password::broker()->sendResetLink(['email' => $user->email]);
 
         return redirect('/desarrolladores/solicitudes')->with(['status', "El desarrollador {$user->name} ha sido aprobado"]);
     }
