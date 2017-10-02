@@ -9,3 +9,5 @@ Route::post('/stations/near', 'StationsController@findNear');
 Route::post('/person/search', 'PeopleController@validateData');
 Route::get('/person/{microsoftPersonId}', 'PeopleController@findByDocument');
 Route::post('/criminalActs', 'CriminalActsController@store');
+
+Route::get('/v1/incidents', 'Api\IncidentsController@index')->middleware('auth:passport-api');
