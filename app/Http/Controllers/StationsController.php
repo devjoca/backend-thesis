@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Station;
 use App\CriminalAct;
 use Illuminate\Http\Request;
@@ -21,6 +22,10 @@ class StationsController extends Controller
 
     public function list()
     {
+        if( Auth::user()->isDeveloper() ) {
+            return redirect()->route('keys.index');
+        }
+
         return view('stations.index', ['stations' => Station::all()]);
     }
 

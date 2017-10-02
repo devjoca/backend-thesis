@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Support\Carbon;
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use App\Notifications\ResetPasswordNotification;
 use Illuminate\Auth\Passwords\DatabaseTokenRepository;
@@ -11,7 +12,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -50,6 +51,17 @@ class User extends Authenticatable
     {
         $this->approved_date = Carbon::now();
         $this->save();
+    }
+
+    public function isAdmin()
+    {
+        return $this->user_type_id == UserType::ADMIN;
+    }
+
+
+    public function isDeveloper()
+    {
+        return $this->user_type_id == UserType::DEVELOPER;
     }
 
     public function sendPasswordResetNotification($token)

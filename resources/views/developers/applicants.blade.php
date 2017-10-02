@@ -29,10 +29,11 @@
                             </tr>
                         @endforeach
                     </table>
+                    @else
+                        <div>
+                            <span>No hay solicitudes por el momento</span>
+                        </div>
                     @endif
-                    <div>
-                        <span>No hay solicitudes por el momento</span>
-                    </div>
                 </div>
             </div>
         </div>

@@ -15,11 +15,11 @@
                 <div class="panel-heading">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <span>
-                            Personal Access Tokens
+                            Llaves de acceso personales
                         </span>
 
                         <a class="action-link" @click="showCreateTokenForm">
-                            Create New Token
+                            Crear nueva llave
                         </a>
                     </div>
                 </div>
@@ -27,14 +27,14 @@
                 <div class="panel-body">
                     <!-- No Tokens Notice -->
                     <p class="m-b-none" v-if="tokens.length === 0">
-                        You have not created any personal access tokens.
+                        No tienes llaves creads.
                     </p>
 
                     <!-- Personal Access Tokens -->
                     <table class="table table-borderless m-b-none" v-if="tokens.length > 0">
                         <thead>
                             <tr>
-                                <th>Name</th>
+                                <th>Nombre</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -49,7 +49,7 @@
                                 <!-- Delete Button -->
                                 <td style="vertical-align: middle;">
                                     <a class="action-link text-danger" @click="revoke(token)">
-                                        Delete
+                                        Eliminar
                                     </a>
                                 </td>
                             </tr>
@@ -67,27 +67,22 @@
                         <button type="button " class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 
                         <h4 class="modal-title">
-                            Create Token
+                            Crear llave
                         </h4>
                     </div>
 
                     <div class="modal-body">
                         <!-- Form Errors -->
                         <div class="alert alert-danger" v-if="form.errors.length > 0">
-                            <p><strong>Whoops!</strong> Something went wrong!</p>
-                            <br>
-                            <ul>
-                                <li v-for="error in form.errors">
-                                    {{ error }}
-                                </li>
-                            </ul>
+                            <p><strong>D:</strong> Algo salió mal, vuelve a intentarlo.</p>
+
                         </div>
 
                         <!-- Create Token Form -->
                         <form class="form-horizontal" role="form" @submit.prevent="store">
                             <!-- Name -->
                             <div class="form-group">
-                                <label class="col-md-4 control-label">Name</label>
+                                <label class="col-md-4 control-label">Nombre</label>
 
                                 <div class="col-md-6">
                                     <input id="create-token-name" type="text" class="form-control" name="name" v-model="form.name">
@@ -120,7 +115,7 @@
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
                         <button type="button" class="btn btn-primary" @click="store">
-                            Create
+                            Crear
                         </button>
                     </div>
                 </div>
@@ -135,14 +130,13 @@
                         <button type="button " class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 
                         <h4 class="modal-title">
-                            Personal Access Token
+                            Llaves de acceso personales
                         </h4>
                     </div>
 
                     <div class="modal-body">
                         <p>
-                            Here is your new personal access token. This is the only time it will be shown so don't lose it!
-                            You may now use this token to make API requests.
+                            Aquí está tu nueva llave de acceso personal. Esta es la única que vez que la verás, por lo tanto no la pierdas. Ahora podrás hacer solicitudes al nuestro API para consumir de manera libre los incidentes.
                         </p>
 
                         <pre><code>{{ accessToken }}</code></pre>
@@ -150,7 +144,7 @@
 
                     <!-- Modal Actions -->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     </div>
                 </div>
             </div>

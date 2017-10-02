@@ -37,15 +37,22 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    @if(Auth::check())
+                    @if(Auth::check() && Auth::user()->isAdmin())
                         <ul class="nav navbar-nav">
                             <li><a href="{{ url('/comisarias') }}">Comisarias</a></li>
                             <li><a href="{{ url('/desarrolladores/solicitudes') }}">Solitudes de desarrollador</a></li>
                         </ul>
                     @endif
-                    <ul class="nav navbar-nav">
-                        <li><a href="{{ url('/desarrolladores') }}">Desarrolladores</a></li>
-                    </ul>
+                    @if(Auth::check() && Auth::user()->isDeveloper())
+                        <ul class="nav navbar-nav">
+                            <li><a href="{{ route('keys.index') }}">Api keys</a></li>
+                        </ul>
+                    @endif
+                    @if(Auth::guest())
+                        <ul class="nav navbar-nav">
+                            <li><a href="{{ url('/desarrolladores') }}">Desarrolladores</a></li>
+                        </ul>
+                    @endif
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">

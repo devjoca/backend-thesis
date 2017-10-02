@@ -1,6 +1,5 @@
 <?php
 
-Auth::routes();
 
 Route::get('/', 'MapController@index');
 
@@ -32,6 +31,11 @@ Route::get('/desarrolladores', 'DevelopersController@index');
 Route::post('/desarrolladores/aplicar', 'DevelopersController@apply');
 Route::get('/desarrolladores/solicitudes', 'DevelopersController@applies');
 
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/desarrolladores/llaves', 'DevelopersController@listKeys')->name('keys.index');
+    Route::post('oauth/personal-access-tokens', 'DevelopersController@storePersonalAccessToken');
+});
+
 Route::get('/person-group/store', function() {
     $response = Zttp\Zttp::withHeaders(['Ocp-Apim-Subscription-Key' => env('AZURE_KEY')])
                ->put('https://eastus2.api.cognitive.microsoft.com/face/v1.0/persongroups/person-data', [
@@ -40,3 +44,5 @@ Route::get('/person-group/store', function() {
 
     return $response->json();
 });
+Auth::routes();
+
