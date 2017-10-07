@@ -74191,7 +74191,7 @@ exports = module.exports = __webpack_require__(43)(undefined);
 
 
 // module
-exports.push([module.i, "\n.range-group {\n  margin-top:10px;\n}\n.form-group {\n  float: left;\n  margin-right: 10px;\n}\n", ""]);
+exports.push([module.i, "\n.range-group {\n  margin-top:10px;\n  display: none;\n}\n.form-group {\n  float: left;\n  margin-right: 10px;\n}\n", ""]);
 
 // exports
 
@@ -74269,7 +74269,7 @@ exports.default = {
     var _this = this;
 
     return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-      var vm, incidents, stations, points;
+      var vm, vmt, stations, boundary, layers, incidents, points;
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -74280,48 +74280,43 @@ exports.default = {
 
             case 3:
               _context.next = 5;
-              return _axios2.default.get('/api/incidents');
+              return _axios2.default.get('/api/vmt');
 
             case 5:
-              incidents = _context.sent;
+              vmt = _context.sent;
               _context.next = 8;
               return _axios2.default.get('/api/stations');
 
             case 8:
               stations = _context.sent;
+              boundary = new google.maps.Data({ map: vm.$refs.map.$mapObject });
+              layers = new google.maps.Data({ map: vm.$refs.map.$mapObject });
 
-
-              _.each(stations.data, function (station) {
-                vm.$refs.map.$mapObject.data.addGeoJson(JSON.parse(station.jurisdictions.geojson));
-                new google.maps.Marker({
-                  position: new google.maps.LatLng(station.lat, station.long),
-                  title: station.name,
-                  map: vm.$refs.map.$mapObject,
-                  draggable: false
-                });
+              boundary.setStyle({
+                strokeColor: 'black',
+                strokeWeight: 2
+              });
+              layers.setStyle({
+                strokeColor: 'grey',
+                strokeWeight: 1
               });
 
+              boundary.addGeoJson(JSON.parse(vmt.data.boundary));
+              layers.addGeoJson(JSON.parse(vmt.data.layers));
+
+              _context.next = 17;
+              return _axios2.default.get('/api/incidents');
+
+            case 17:
+              incidents = _context.sent;
               points = _.map(incidents.data, function (incindent) {
                 return new google.maps.LatLng(incindent.lat, incindent.long);
               });
 
-              vm.heatmap = new google.maps.visualization.HeatmapLayer({
-                radius: 17,
-                opacity: 0.6,
-                data: points
-              });
 
-              // let route = "pkthAfepuMc@hDKjBh@B~CP~BLjIf@`CVp@aFd@}DPcBz@Jp@J`@Hp@PZJBMEQBWb@iDT_BzHx@n@HC?UrAUpAq@fDUZsDqA}By@u@Q_Ca@a@EcCE}@CkFYuCOc@I{@QcAUMLa@~@Ul@S~@SlA";
-              // var decodedPath = google.maps.geometry.encoding.decodePath(route);
-
-              // const routePath = new google.maps.Polyline({
-              //   path:decodedPath
-              // });
-
-              // routePath.setMap(this.$refs.map.$mapObject);
               vm.heatmap.setMap(_this.$refs.map.$mapObject);
 
-            case 13:
+            case 20:
             case 'end':
               return _context.stop();
           }
@@ -75557,7 +75552,7 @@ var render = function() {
       _c("gmap-map", {
         ref: "map",
         staticStyle: { width: "100%", height: "500px" },
-        attrs: { center: { lat: -12.12, lng: -77.02 }, zoom: 12 }
+        attrs: { center: { lat: -12.153794, lng: -76.95287 }, zoom: 12 }
       }),
       _vm._v(" "),
       _c("div", { staticClass: "form-group range-group" }, [

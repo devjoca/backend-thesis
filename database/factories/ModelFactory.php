@@ -29,8 +29,8 @@ $factory->define(App\Incident::class, function (Faker\Generator $faker) {
         'email' => $faker->safeEmail,
         'person_id' => Person::all()->pluck('id')->random(),
         'datetime' => $faker->dateTimeBetween($startDate = '-2 years', $endDate = 'now'),
-        'lat' => $faker->latitude(-11.993841,-12.079799),
-        'long' => $faker->longitude(-77.118874,-76.994591),
+        'lat' => $faker->latitude(-12.11603475139223,-12.235508244658904),
+        'long' => $faker->longitude(-76.97185785131836,-76.89804345922852),
         'aditional_information' => $faker->text,
         'denouncePersonDetails' => $faker->text,
     ];

@@ -2,7 +2,7 @@
     <div>
         <gmap-map
           ref="map"
-          :center="{lat:-12.12, lng:-77.02}"
+          :center="{lat:-12.153794, lng:-76.95287}"
           :zoom="12"
           style="width: 100%; height: 500px"
         >
@@ -48,36 +48,28 @@ export default {
   async mounted () {
     let vm = this;
     await loaded;
-    const incidents = await axios.get('/api/incidents');
+    const vmt = await axios.get('/api/vmt');
     const stations = await axios.get('/api/stations');
 
-    _.each(stations.data, function(station) {
-      vm.$refs.map.$mapObject.data.addGeoJson(JSON.parse(station.jurisdictions.geojson));
-      new google.maps.Marker({
-        position: new google.maps.LatLng(station.lat, station.long),
-        title: station.name,
-        map: vm.$refs.map.$mapObject,
-        draggable: false,
-      });
+    let boundary = new google.maps.Data({map: vm.$refs.map.$mapObject});
+    let layers = new google.maps.Data({map: vm.$refs.map.$mapObject});
+    boundary.setStyle({
+      strokeColor: 'black',
+      strokeWeight: 2
+    });
+    layers.setStyle({
+      strokeColor: 'grey',
+      strokeWeight: 1
     });
 
+    boundary.addGeoJson(JSON.parse(vmt.data.boundary));
+    layers.addGeoJson(JSON.parse(vmt.data.layers));
+
+    const incidents = await axios.get('/api/incidents');
     let points = _.map(incidents.data, function(incindent) {
       return new google.maps.LatLng(incindent.lat, incindent.long);
     });
-    vm.heatmap = new google.maps.visualization.HeatmapLayer({
-      radius: 17,
-      opacity: 0.6,
-      data: points,
-    });
 
-    // let route = "pkthAfepuMc@hDKjBh@B~CP~BLjIf@`CVp@aFd@}DPcBz@Jp@J`@Hp@PZJBMEQBWb@iDT_BzHx@n@HC?UrAUpAq@fDUZsDqA}By@u@Q_Ca@a@EcCE}@CkFYuCOc@I{@QcAUMLa@~@Ul@S~@SlA";
-    // var decodedPath = google.maps.geometry.encoding.decodePath(route);
-
-    // const routePath = new google.maps.Polyline({
-    //   path:decodedPath
-    // });
-
-    // routePath.setMap(this.$refs.map.$mapObject);
     vm.heatmap.setMap(this.$refs.map.$mapObject);
   },
   data () {
@@ -119,6 +111,7 @@ export default {
 <style>
   .range-group {
     margin-top:10px;
+    display: none;
   }
   .form-group {
     float: left;

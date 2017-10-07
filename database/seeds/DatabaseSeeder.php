@@ -1,6 +1,7 @@
 <?php
 
 use App\User;
+use App\District;
 use App\UserType;
 use Illuminate\Database\Seeder;
 
@@ -18,9 +19,16 @@ class DatabaseSeeder extends Seeder
             ['name' => 'developer'],
         ]);
 
-        $this->call(StationsSeeder::class);
+        $district = new District;
+        $district->name = "Villa María del Triunfo";
+        $district->boundary = file_get_contents(base_path('/database/data/vmt.json'));
+        $district->layers = file_get_contents(base_path('/database/data/polygons.geojson'));
+        $district->save();
+
+        $this->call(VmtStationsSeeder::class);
         $this->call(PersonSeeder::class);
         $this->call(IncidentsSeeder::class);
+
         User::create([
             'email' => 'admin@admin.com',
             'name' => 'admin',

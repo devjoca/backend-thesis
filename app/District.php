@@ -4,9 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Incident extends Model
+class District extends Model
 {
     protected $guarded = [];
-
-    protected $dates = [ 'datetime' ];
 }

@@ -6,27 +6,27 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
 
-                <div class="panel-heading">Person List</div>
+                <div class="panel-heading">Lista de personas</div>
                 @if(session('message'))
                     <div class="panel-body">
                         {{ session('message') }}
                     </div>
                 @endif
                 <div class="panel-body">
-                    <a href="/person/create">Create a Person</a>
-                    <a href="/person/search">Search Person</a>
-                    <a href="/person/train">Train data</a>
-                    Training-status: {{ $status }}
+                    <a href="/person/create">Crear Persona</a>
+                    <!-- <a href="/person/search">Buscar Persona</a> -->
+                    <a class="btn btn-default" href="/person/train">Entrenar Datos</a>
+                    Estado de entrenamiento: {{ ($status=='succeeded')?'exitoso':'fallido' }}
                 </div>
 
                 <div class="panel-body">
                     <table class="table">
                         <tr>
-                            <td>name</td>
-                            <td>lastname</td>
-                            <td>dni</td>
-                            <td>delete</td>
-                            <td>photos</td>
+                            <td>Nombre</td>
+                            <td>Apellido</td>
+                            <td>DNI</td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         @foreach($persons as $person)
                             <tr>
@@ -43,11 +43,11 @@
                                     <form method="post" action="/person/delete">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="hidden" name="person_id" value="{{ $person['microsoft_person_id'] }}">
-                                        <input type="submit" value="delete">
+                                        <input type="submit" value="Eliminar">
                                     </form>
                                 </td>
                                 <td>
-                                    <a href="/person/{{ $person['microsoft_person_id'] }}/photo">Add photos</a>
+                                    <a href="/person/{{ $person['microsoft_person_id'] }}/photo">Agregar fotos</a>
                                 </td>
                             </tr>
                         @endforeach

@@ -16,7 +16,7 @@ class CreateStationsTable extends Migration
         Schema::create('stations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->double('lat');
             $table->double('long');
             $table->json('patrol_route')->nullable();
