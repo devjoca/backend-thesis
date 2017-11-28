@@ -74191,7 +74191,7 @@ exports = module.exports = __webpack_require__(43)(undefined);
 
 
 // module
-exports.push([module.i, "\n.range-group {\n  margin-top:10px;\n  display: none;\n}\n.form-group {\n  float: left;\n  margin-right: 10px;\n}\n", ""]);
+exports.push([module.i, "\n#databox {\n  position: relative;\n  top: 41px;\n  z-index: 1000;\n  background: white;\n  font-weight: bold;\n  width: 300px;\n  border: rgb(229, 229, 229) 1px solid;\n  left: 107px;\n  padding: 3px 3px;\n}\n", ""]);
 
 // exports
 
@@ -74224,6 +74224,8 @@ var _vuejsDatepicker2 = _interopRequireDefault(_vuejsDatepicker);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; } //
+//
+//
 //
 //
 //
@@ -74272,7 +74274,7 @@ exports.default = {
                 var color = feature.getProperty('color');
                 return {
                   fillColor: 'hsl(' + color[0] + ',' + color[1] + '%,' + color[2] + '%)',
-                  strokeColor: '#fff',
+                  strokeColor: '#eee',
                   fillOpacity: 0.75,
                   strokeWeight: 1
                 };
@@ -74281,7 +74283,16 @@ exports.default = {
               boundary.addGeoJson(JSON.parse(vmt.data.boundary));
               layers.addGeoJson(JSON.parse(vmt.data.layers));
 
-            case 12:
+              layers.addListener('mouseover', function (e) {
+                layers.revertStyle();
+                layers.overrideStyle(e.feature, { strokeWeight: 6 });
+                vm.count = e.feature.getProperty('count');
+              });
+              layers.addListener('mouseout', function (e) {
+                layers.revertStyle();
+              });
+
+            case 14:
             case 'end':
               return _context.stop();
           }
@@ -74294,6 +74305,7 @@ exports.default = {
       heatmap: {},
       start_date: new Date(),
       end_date: new Date(),
+      count: 0,
       start_hour: {
         HH: "00",
         mm: "00"
@@ -75514,6 +75526,10 @@ var render = function() {
   return _c(
     "div",
     [
+      _c("div", { attrs: { id: "databox" } }, [
+        _vm._v(" Número de hechos reportadas: " + _vm._s(_vm.count))
+      ]),
+      _vm._v(" "),
       _c("gmap-map", {
         ref: "map",
         staticStyle: { width: "100%", height: "500px" },

@@ -1,11 +1,13 @@
 <template>
     <div>
+      <div id="databox"> Número de hechos reportadas: {{count}}</div>
         <gmap-map
           ref="map"
           :center="{lat:-12.153794, lng:-76.95287}"
           :zoom="12"
           style="width: 100%; height: 500px"
         >
+
       </gmap-map>
     </div>
 </template>
@@ -37,7 +39,7 @@ export default {
       var color = feature.getProperty('color');
       return {
         fillColor: 'hsl(' + color[0] + ',' + color[1] + '%,' + color[2] + '%)',
-        strokeColor: '#fff',
+        strokeColor: '#eee',
         fillOpacity: 0.75,
         strokeWeight: 1
       };
@@ -45,12 +47,22 @@ export default {
 
     boundary.addGeoJson(JSON.parse(vmt.data.boundary));
     layers.addGeoJson(JSON.parse(vmt.data.layers));
+
+    layers.addListener('mouseover', (e) => {
+      layers.revertStyle();
+      layers.overrideStyle(e.feature, {strokeWeight: 6});
+      vm.count = e.feature.getProperty('count');
+    });
+    layers.addListener('mouseout', (e) => {
+      layers.revertStyle();
+    });
   },
   data () {
     return {
       heatmap: {},
       start_date: new Date(),
       end_date: new Date(),
+      count: 0,
       start_hour: {
         HH: "00",
         mm: "00",
@@ -83,12 +95,15 @@ export default {
 }
 </script>
 <style>
-  .range-group {
-    margin-top:10px;
-    display: none;
-  }
-  .form-group {
-    float: left;
-    margin-right: 10px;
-  }
+#databox {
+  position: relative;
+  top: 41px;
+  z-index: 1000;
+  background: white;
+  font-weight: bold;
+  width: 300px;
+  border: rgb(229, 229, 229) 1px solid;
+  left: 107px;
+  padding: 3px 3px;
+}
 </style>
