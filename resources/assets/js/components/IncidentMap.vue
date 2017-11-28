@@ -7,30 +7,6 @@
           style="width: 100%; height: 500px"
         >
       </gmap-map>
-      <div class="form-group range-group">
-        <div class="form-group">
-          <label>Fecha inicial:</label>
-          <datepicker language="es" v-model="start_date"></datepicker>
-        </div>
-        <div class="form-group">
-          <label>Fecha final:</label>
-          <datepicker language="es" v-model="end_date"></datepicker>
-        </div>
-        <div class="form-group">
-          <label>Hora inicial:</label><br>
-          <vue-timepicker :minute-interval="10" v-model="start_hour"></vue-timepicker>
-        </div>
-        <div class="form-group">
-          <label>Hora final:</label><br>
-          <vue-timepicker :minute-interval="10" v-model="end_hour"></vue-timepicker>
-        </div>
-        <div class="form-group">
-          <label>&nbsp;</label><br>
-          <button class="btn" v-on:click="searchIncidents()">Buscar</button>
-        </div>
-      </div>
-
-
     </div>
 </template>
 
@@ -49,7 +25,6 @@ export default {
     let vm = this;
     await loaded;
     const vmt = await axios.get('/api/vmt');
-    const stations = await axios.get('/api/stations');
 
     let boundary = new google.maps.Data({map: vm.$refs.map.$mapObject});
     let layers = new google.maps.Data({map: vm.$refs.map.$mapObject});
@@ -57,20 +32,19 @@ export default {
       strokeColor: 'black',
       strokeWeight: 2
     });
-    layers.setStyle({
-      strokeColor: 'grey',
-      strokeWeight: 1
+
+    layers.setStyle(function(feature) {
+      var color = feature.getProperty('color');
+      return {
+        fillColor: 'hsl(' + color[0] + ',' + color[1] + '%,' + color[2] + '%)',
+        strokeColor: '#fff',
+        fillOpacity: 0.75,
+        strokeWeight: 1
+      };
     });
 
     boundary.addGeoJson(JSON.parse(vmt.data.boundary));
     layers.addGeoJson(JSON.parse(vmt.data.layers));
-
-    const incidents = await axios.get('/api/incidents');
-    let points = _.map(incidents.data, function(incindent) {
-      return new google.maps.LatLng(incindent.lat, incindent.long);
-    });
-
-    vm.heatmap.setMap(this.$refs.map.$mapObject);
   },
   data () {
     return {

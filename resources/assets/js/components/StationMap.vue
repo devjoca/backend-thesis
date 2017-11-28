@@ -31,7 +31,10 @@
 import axios from 'axios';
 import { loaded } from 'vue2-google-maps';
 import clustersKmeans from '@turf/clusters-kmeans';
+import distance from '@turf/distance';
 import {featureCollection, point} from '@turf/turf';
+
+const shuffleArray = (arr) => arr.sort(() => (Math.random() - 0.5));
 
 export default {
   props: ['center_lat', 'center_lng', 'id'],
@@ -44,10 +47,13 @@ export default {
   async mounted () {
     await loaded;
     let vm = this;
+    const vmt = await axios.get('/api/vmt');
+
     const incidents = await axios.get('/api/incidents');
     const station = await axios.get(`/api/stations/${this.id}`);
-    const geoJson = JSON.parse(station.data.jurisdictions.geojson);
+    const geoJson = JSON.parse(vmt.data.boundary);
     const json = this.$refs.map.$mapObject.data.addGeoJson(geoJson);
+
     const jurisdiction = new google.maps.Polygon({paths: json[0].getGeometry().getArray()})
 
     vm.points = _.filter(incidents.data, function(incindent) {
@@ -71,7 +77,7 @@ export default {
         return point([incindent.lat, incindent.long]);
       });
       let hotspots = [];
-      let clusters = clustersKmeans(featureCollection(points), 8);
+      let clusters = clustersKmeans(featureCollection(points), 120);
       _.each(clusters.features, (c) => {
         hotspots[c.properties.cluster] = c.properties.centroid;
       });
@@ -82,7 +88,16 @@ export default {
       });
     },
     async generateRoute () {
-      let coordinates = _.reduce(this.markers, (string, m) => {
+
+      let coords = this.markers.filter((m)=>{
+        let from = point([parseFloat(this.center_lat), parseFloat(this.center_lng)]);
+        let to = point([parseFloat(m.position.lat), parseFloat(m.position.lng)]);
+        return distance(from, to) < 0.8;
+      });
+      coords = shuffleArray(coords);
+      coords = coords.slice(0,6);
+
+      let coordinates = _.reduce(coords, (string, m) => {
         return `${string};${m.position.lng},${m.position.lat}`;
       }, `${this.center_lng},${this.center_lat}`);
       const route = await axios.get(`https://api.mapbox.com/optimized-trips/v1/mapbox/driving/${coordinates}?roundtrip=true&access_token=${mapbox_key}`);
@@ -95,7 +110,6 @@ export default {
       });
 
       routePath.setMap(this.$refs.map.$mapObject);
-
     }
   }
 

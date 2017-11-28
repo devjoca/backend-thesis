@@ -27,7 +27,7 @@
                 <div class="panel-body">
                     <!-- No Tokens Notice -->
                     <p class="m-b-none" v-if="tokens.length === 0">
-                        No tienes llaves creads.
+                        No tienes llaves creadas.
                     </p>
 
                     <!-- Personal Access Tokens -->
