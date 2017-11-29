@@ -48,13 +48,16 @@ class ColorIncidentLayers extends Command
 
         $n = 0;
         $counts = [];
+        $total = count($geo->getComponents());
         foreach ($geo->getComponents() as $g) {
             $n ++;
             $count = 0;
-            $incidents->each(function($i) use($g, &$count) {
+            $incidents->each(function($i) use($g, &$count, $n, $total) {
                 $d = $this->haversineDistance($i->lat, $i->long, $g->getCentroid()->y(), $g->getCentroid()->x());
                 if ($d < 0.150) $count +=1;
             });
+            $p = number_format($n*100/$total,2);
+            $this->info("Status: {$p}%");
             $counts[] = $count;
         }
 
